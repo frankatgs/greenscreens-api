@@ -119,7 +119,10 @@ components:
         - consoleType
       properties:
         consoleId:
-          type: integer
+          type: string
+          format: uuid
+        storeReferenceId:
+          type: string
           format: uuid
         consoleName:
           type: string
