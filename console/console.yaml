@@ -1,0 +1,327 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: Consoles
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /consoles:
+    get:
+      summary: 'Returns a set of console configurations'
+      operationId: listConsole
+      tags:
+        - console
+      parameters:
+        - name: locationId
+          in: query
+          description: LocationId to filter list of conoles
+          required: false
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: 'Ok'
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Console'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /consoles/{consoleId}:
+    get:
+      summary: Returns a set of console configurations
+      operationId: getConsoleById
+      tags:
+        - console
+      parameters:
+        - name: consoleId
+          in: path
+          description: LocationId to filter list of consoles
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: 'Ok'
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Console'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /widgetConfigurations:
+    post:
+      summary: Returns a rendered console configuration which represents the point-in-time information that should be displayed in a widget and directives on how the widget should appear on screen
+      operationId: listConsole
+      tags:
+        - widget
+        - widget configuration
+      requestBody:
+        description: The widget definition that should be used to generate the widget configuration
+        required: true
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/WidgetDefinition'
+      responses:
+        '200':
+          description: 'Ok'
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Console'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+components:
+  schemas:
+    Console:
+      type: object
+      required:
+        - consoleId
+        - consoleName
+        - consoleType
+      properties:
+        consoleId:
+          type: integer
+          format: uuid
+        consoleName:
+          type: string
+        consoleType:
+          type: string
+        widgetDefinitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/WidgetDefinition'
+
+    WidgetDefinition:
+      type: object
+      required:
+        - WidgetId
+        - WidgetType
+        - WidgetName
+        - DatasourceId
+      properties:
+        WidgetId:
+          type: integer
+          format: int32
+        WidgetType:
+          type: string
+        WidgetName:
+          type: string
+        DatasourceId:
+          type: integer
+          format: int32
+        ConfigurationBase:
+          $ref: '#/components/schemas/WidgetConfiguration'
+        ConfigurationRules:
+          $ref: '#/components/schemas/WidgetConfigurationRules'
+
+    WidgetConfiguration:
+        type: object
+        properties:
+          WidgetName:
+            type: string
+          WidgetType:
+            type: string
+          ModuleName:
+            type: string
+          BackgroundColor:
+            type: string
+          PrimaryDataValue:
+            type: object
+            properties:
+                Text:
+                  type: string
+                TextColor:
+                    type: string
+                FontFamily:
+                    type: string
+                FontSize:
+                    type: integer
+                StringFormat:
+                    type: string
+                DataType:
+                    type: string
+                IsVisible:
+                    type: boolean
+            required:
+                - Text
+                - TextColor
+                - FontFamily
+                - FontSize
+                - StringFormat
+                - DataType
+                - IsVisible
+          PrimaryDataLabel:
+            type: object
+            properties:
+                Text:
+                  type: string
+                TextColor:
+                  type: string
+                FontFamily:
+                  type: string
+                FontSize:
+                  type: integer
+                StringFormat:
+                  type: string
+                DataType:
+                  type: string
+                IsVisible:
+                  type: boolean
+            required:
+                - Text
+                - TextColor
+                - FontFamily
+                - FontSize
+                - StringFormat
+                - DataType
+                - IsVisible
+          SecondaryDataValue:
+            type: object
+            properties:
+                Text:
+                    type: string
+                TextColor:
+                    type: string
+                FontFamily:
+                    type: string
+                FontSize:
+                    type: integer
+                StringFormat:
+                    type: string
+                DataType:
+                    type: string
+                IsVisible:
+                    type: boolean
+            required:
+                - Text
+                - TextColor
+                - FontFamily
+                - FontSize
+                - StringFormat
+                - DataType
+                - IsVisible
+          Icon:
+              type: object
+              properties:
+                Text:
+                    type: string
+                TextColor:
+                    type: string
+                FontFamily:
+                    type: string
+                FontSize:
+                    type: integer
+                StringFormat:
+                    type: string
+                DataType:
+                    type: string
+                IsVisible:
+                    type: boolean
+              required:
+                - Text
+                - TextColor
+                - FontFamily
+                - FontSize
+                - StringFormat
+                - DataType
+                - IsVisible
+          Action:
+              type: object
+              properties:
+                haptic:
+                    type: string
+                status:
+                    type: string
+                Desciption:
+                    type: string
+                MainAction:
+                    type: object
+                    properties:
+                      actionType:
+                        type: string
+                      actionParameter1:
+                        type: string
+                    required:
+                    - actionType
+                    - actionParameter1
+              required:
+                - haptic
+                - status
+                - Desciption
+                - MainAction
+        required:
+            - WidgetName
+            - WidgetType
+            - ModuleName
+            - BackgroundColor
+            - PrimaryDataValue
+            - PrimaryDataLabel
+            - Action
+
+    WidgetConfigurationRules:
+        type: object
+        properties:
+          BackgroundColor:
+            type: string
+          PrimaryDataValue:
+            type: object
+            properties:
+                Text:
+                  type: string
+          SecondaryDataValue:
+            type: object
+            properties:
+                Text:
+                    type: string
+          Icon:
+              type: object
+              properties:
+                Text:
+                    type: string
+                TextColor:
+                    type: string
+                IsVisible:
+                    type: boolean
+
+
+
+
