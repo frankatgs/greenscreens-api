@@ -216,6 +216,11 @@ components:
             type: string
           ModuleName:
             type: string
+          LocationId: 
+            type: string
+            format: uuid
+          GeneratedDate:
+            type: string
           BackgroundColor:
             type: string
           PrimaryDataValue:
