@@ -208,6 +208,8 @@ components:
     WidgetConfiguration:
         type: object
         properties:
+          WidgetId:
+            type: integer
           WidgetName:
             type: string
           WidgetType:
