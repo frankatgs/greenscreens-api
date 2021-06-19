@@ -75,6 +75,7 @@ paths:
                 $ref: '#/components/schemas/Error'
 
 
+
   /consoles/{consoleId}:
     get:
       summary: Returns a set of console configurations
@@ -108,6 +109,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+
+  /widgets/widgetConfiguration:
     post:
       summary: Returns a rendered console configuration which represents the point-in-time information that should be displayed in a widget and directives on how the widget should appear on screen
       operationId: generateWidgetConfiguration
@@ -149,6 +152,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+
 
 
 
