@@ -219,6 +219,8 @@ components:
           LocationId: 
             type: string
             format: uuid
+          LocationName:
+            type: string
           GeneratedDate:
             type: string
           BackgroundColor:
