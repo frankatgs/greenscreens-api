@@ -183,12 +183,12 @@ components:
     WidgetDefinition:
       type: object
       required:
-        - WidgetId
+        - WidgetTemplateId
         - WidgetType
         - WidgetName
         - DatasourceId
       properties:
-        WidgetId:
+        WidgetTemaplateId:
           type: integer
           format: int32
         WidgetType:
@@ -206,7 +206,7 @@ components:
     WidgetConfiguration:
         type: object
         properties:
-          WidgetId:
+          WidgetTemaplateId:
             type: integer
           WidgetName:
             type: string
@@ -359,7 +359,7 @@ components:
     WidgetConfigurationBase:
         type: object
         properties:
-          WidgetId:
+          WidgetTemaplateId:
             type: integer
           WidgetName:
             type: string
