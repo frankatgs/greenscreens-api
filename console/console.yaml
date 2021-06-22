@@ -3,7 +3,7 @@ info:
   version: '1.0'
   title: Consoles
 paths:
-  /consoles:
+  /Consoles:
     get:
       summary: 'Returns a set of console configurations'
       operationId: listConsole
@@ -74,7 +74,7 @@ paths:
 
 
 
-  /consoles/{consoleId}:
+  /Consoles/{consoleId}:
     get:
       summary: Returns a set of console configurations
       operationId: getConsoleById
