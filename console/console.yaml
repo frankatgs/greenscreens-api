@@ -12,7 +12,7 @@ paths:
       parameters:
         - name: locationId
           in: query
-          description: LocationId to filter list of conoles
+          description: LocationId to filter list of consoles
           required: false
           schema:
             type: string
@@ -110,7 +110,7 @@ paths:
 
   /widgets/widgetConfiguration:
     post:
-      summary: Rendered widget configuration 
+      summary: Rendered widget configuration from definition provided
       operationId: generateWidgetConfiguration
       tags:
         - widget
