@@ -389,14 +389,6 @@ components:
     WidgetConfigurationBase:
         type: object
         properties:
-          WidgetTemaplateId:
-            type: integer
-          WidgetName:
-            type: string
-          WidgetType:
-            type: string
-          ModuleName:
-            type: string
           BackgroundColor:
             type: string
           PrimaryDataValue:
