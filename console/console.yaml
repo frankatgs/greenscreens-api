@@ -108,54 +108,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 
 
-  /widgets/widgetConfiguration:
-    post:
-      summary: Rendered widget configuration from definition provided
-      operationId: generateWidgetConfiguration
-      tags:
-        - widget
-        - widget configuration
-      parameters:
-        - name: locationId
-          in: query
-          description: Location identifier for the location to which the widget configuration should be bound
-          required: true
-          schema:
-            type: string
-            format: uuid
-      requestBody:
-        description: The widget definition that should be used to generate the widget configuration
-        required: true
-        content:
-            application/json:
-                schema:
-                    $ref: '#/components/schemas/WidgetDefinition'
-      responses:
-        '200':
-          description: 'Ok'
-          headers:
-            x-next:
-              description: A link to the next page of responses
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/WidgetConfiguration'
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-
-
-
-
-
-
 components:
   schemas:
     Console:
