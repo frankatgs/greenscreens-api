@@ -198,7 +198,7 @@ components:
         consoleId:
           type: string
           format: uuid
-        storeReferenceId:
+        locationId:
           type: string
           format: uuid
         consoleName:
