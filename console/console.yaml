@@ -236,7 +236,7 @@ components:
     WidgetConfiguration:
         type: object
         properties:
-          WidgetTemaplateId:
+          WidgetTemplateId:
             type: integer
           WidgetName:
             type: string
