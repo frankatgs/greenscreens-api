@@ -198,6 +198,7 @@ components:
         consoleId:
           type: string
           format: uuid
+        # locationId - Tied to reference ID (Store or Owner)
         locationId:
           type: string
           format: uuid
