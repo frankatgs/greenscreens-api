@@ -214,47 +214,43 @@ components:
     WidgetDefinition:
       type: object
       required:
-        - WidgetTemplateId
-        - WidgetType
-        - WidgetName
+        - widgetTemplateId
+        - widgetType
+        - widgetName
         - DatasourceId
       properties:
-        WidgetTemplateId:
+        widgetTemplateId:
           type: integer
           format: int32
-        WidgetType:
+        widgetType:
           type: string
-        WidgetName:
+        widgetName:
           type: string
-        DatasourceId:
-          type: integer
-          format: int32
-        ConfigurationBase:
-          $ref: '#/components/schemas/WidgetConfigurationBase'
-        ConfigurationRules:
-          $ref: '#/components/schemas/WidgetConfigurationRules'
+        moduleName:
+          type: string
 
-    WidgetConfiguration:
-        type: object
-        properties:
-          WidgetTemplateId:
-            type: integer
-          WidgetName:
-            type: string
-          WidgetType:
-            type: string
-          ModuleName:
-            type: string
-          LocationId: 
-            type: string
-            format: uuid
-          LocationName:
-            type: string
-          GeneratedDate:
-            type: string
-          BackgroundColor:
-            type: string
-          PrimaryDataValue:
+        datasource:
+          type: object
+          properties: 
+            datasourceId:
+              type: string
+        state:
+            type: object
+            properties:
+              renderState:
+                type: string
+              renderedAt:
+                type: string
+              renderLocationId:
+                type: string
+              renderLocationName:
+                type: string
+        elementBackground:
+            type: object
+            properties:
+                backgroundColor:
+                    type: string
+        elementPrimaryDataValue:
             type: object
             properties:
                 Text:
@@ -271,40 +267,58 @@ components:
                     type: string
                 IsVisible:
                     type: boolean
-            required:
-                - Text
-                - TextColor
-                - FontFamily
-                - FontSize
-                - StringFormat
-                - DataType
-                - IsVisible
-          PrimaryDataLabel:
+        elementPrimaryDataLabel:
             type: object
             properties:
                 Text:
                   type: string
                 TextColor:
-                  type: string
+                    type: string
                 FontFamily:
-                  type: string
+                    type: string
                 FontSize:
-                  type: integer
+                    type: integer
                 StringFormat:
-                  type: string
+                    type: string
                 DataType:
-                  type: string
+                    type: string
                 IsVisible:
-                  type: boolean
-            required:
-                - Text
-                - TextColor
-                - FontFamily
-                - FontSize
-                - StringFormat
-                - DataType
-                - IsVisible
-          SecondaryDataValue:
+                    type: boolean
+        elementSecondaryDataValue:
+            type: object
+            properties:
+                Text:
+                  type: string
+                TextColor:
+                    type: string
+                FontFamily:
+                    type: string
+                FontSize:
+                    type: integer
+                StringFormat:
+                    type: string
+                DataType:
+                    type: string
+                IsVisible:
+                    type: boolean
+        elementSecondaryDataLabel:
+            type: object
+            properties:
+                Text:
+                  type: string
+                TextColor:
+                    type: string
+                FontFamily:
+                    type: string
+                FontSize:
+                    type: integer
+                StringFormat:
+                    type: string
+                DataType:
+                    type: string
+                IsVisible:
+                    type: boolean
+        elementIcon:
             type: object
             properties:
                 Text:
@@ -321,235 +335,20 @@ components:
                     type: string
                 IsVisible:
                     type: boolean
-            required:
-                - Text
-                - TextColor
-                - FontFamily
-                - FontSize
-                - StringFormat
-                - DataType
-                - IsVisible
-          Icon:
-              type: object
-              properties:
-                Text:
-                    type: string
-                TextColor:
-                    type: string
-                FontFamily:
-                    type: string
-                FontSize:
-                    type: integer
-                StringFormat:
-                    type: string
-                DataType:
-                    type: string
-                IsVisible:
-                    type: boolean
-              required:
-                - Text
-                - TextColor
-                - FontFamily
-                - FontSize
-                - StringFormat
-                - DataType
-                - IsVisible
-          Action:
-              type: object
-              properties:
+        elementAction:
+            type: object
+            properties:
                 haptic:
                     type: string
                 status:
                     type: string
                 Desciption:
                     type: string
-                MainAction:
-                    type: object
-                    properties:
-                      actionType:
-                        type: string
-                      actionParameter1:
-                        type: string
-                    required:
-                    - actionType
-                    - actionParameter1
-              required:
-                - haptic
-                - status
-                - Desciption
-                - MainAction
-        required:
-            - WidgetName
-            - WidgetType
-            - ModuleName
-            - BackgroundColor
-            - PrimaryDataValue
-            - PrimaryDataLabel
-            - Action
+                MainActionType:
+                    type: string
+                MainActionParameter:
+                    type: string
 
-    WidgetConfigurationBase:
-        type: object
-        properties:
-          BackgroundColor:
-            type: string
-          PrimaryDataValue:
-            type: object
-            properties:
-                Text:
-                  type: string
-                TextColor:
-                    type: string
-                FontFamily:
-                    type: string
-                FontSize:
-                    type: integer
-                StringFormat:
-                    type: string
-                DataType:
-                    type: string
-                IsVisible:
-                    type: boolean
-            required:
-                - Text
-                - TextColor
-                - FontFamily
-                - FontSize
-                - StringFormat
-                - DataType
-                - IsVisible
-          PrimaryDataLabel:
-            type: object
-            properties:
-                Text:
-                  type: string
-                TextColor:
-                  type: string
-                FontFamily:
-                  type: string
-                FontSize:
-                  type: integer
-                StringFormat:
-                  type: string
-                DataType:
-                  type: string
-                IsVisible:
-                  type: boolean
-            required:
-                - Text
-                - TextColor
-                - FontFamily
-                - FontSize
-                - StringFormat
-                - DataType
-                - IsVisible
-          SecondaryDataValue:
-            type: object
-            properties:
-                Text:
-                    type: string
-                TextColor:
-                    type: string
-                FontFamily:
-                    type: string
-                FontSize:
-                    type: integer
-                StringFormat:
-                    type: string
-                DataType:
-                    type: string
-                IsVisible:
-                    type: boolean
-            required:
-                - Text
-                - TextColor
-                - FontFamily
-                - FontSize
-                - StringFormat
-                - DataType
-                - IsVisible
-          Icon:
-              type: object
-              properties:
-                Text:
-                    type: string
-                TextColor:
-                    type: string
-                FontFamily:
-                    type: string
-                FontSize:
-                    type: integer
-                StringFormat:
-                    type: string
-                DataType:
-                    type: string
-                IsVisible:
-                    type: boolean
-              required:
-                - Text
-                - TextColor
-                - FontFamily
-                - FontSize
-                - StringFormat
-                - DataType
-                - IsVisible
-          Action:
-              type: object
-              properties:
-                haptic:
-                    type: string
-                status:
-                    type: string
-                Desciption:
-                    type: string
-                MainAction:
-                    type: object
-                    properties:
-                      actionType:
-                        type: string
-                      actionParameter1:
-                        type: string
-                    required:
-                    - actionType
-                    - actionParameter1
-              required:
-                - haptic
-                - status
-                - Desciption
-                - MainAction
-        required:
-            - WidgetName
-            - WidgetType
-            - ModuleName
-            - BackgroundColor
-            - PrimaryDataValue
-            - PrimaryDataLabel
-            - Action
-
-
-    WidgetConfigurationRules:
-        type: object
-        properties:
-          BackgroundColor:
-            type: string
-          PrimaryDataValue:
-            type: object
-            properties:
-                Text:
-                  type: string
-          SecondaryDataValue:
-            type: object
-            properties:
-                Text:
-                    type: string
-          Icon:
-              type: object
-              properties:
-                Text:
-                    type: string
-                TextColor:
-                    type: string
-                IsVisible:
-                    type: boolean
 
 
 
